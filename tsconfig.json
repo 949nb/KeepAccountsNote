@@ -20,6 +20,10 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
+  // 支持目录别名
+  "compilerOption": {
+    "baseUrl": "src"
+  },
   "include": [
     "src"
   ]
