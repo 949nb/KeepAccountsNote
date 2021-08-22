@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { ListIcon, MoneyIcon, NavWrapper, TagsIcon } from './NavStyle'
 
 
@@ -7,22 +7,22 @@ const Nav = () => {
         <NavWrapper>
             <ul>
                 <li>
-                    <Link to="/tags">
-                        <TagsIcon fill={ 'red' }/>
+                    <NavLink to="/tags" activeClassName={"selected"}>
+                        <TagsIcon/>
                         标签
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link to="/money">
-                        <MoneyIcon fill={ 'red' }/>
+                    <NavLink to="/money" activeClassName={"selected"}>
+                        <MoneyIcon/>
                         记账
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link to="/statistics">
-                        <ListIcon fill={ 'red' }/>
+                    <NavLink to="/statistics" activeClassName={"selected"}>
+                        <ListIcon/>
                         统计
-                    </Link>
+                    </NavLink>
                 </li>
             </ul>
         </NavWrapper>

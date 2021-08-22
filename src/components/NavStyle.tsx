@@ -16,6 +16,10 @@ export let NavWrapper = styled.nav`
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        &.selected {
+          color: green;
+          fill: green;
+        }
       }
     }
   }
