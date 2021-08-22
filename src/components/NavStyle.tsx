@@ -11,10 +11,12 @@ export let NavWrapper = styled.nav`
       width: 33.3333%;
       text-align: center;
       padding: 16px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+      > a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
     }
   }
 `

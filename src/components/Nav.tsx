@@ -7,20 +7,20 @@ const Nav = () => {
         <NavWrapper>
             <ul>
                 <li>
-                    <TagsIcon fill={ 'red' }/>
                     <Link to="/tags">
+                        <TagsIcon fill={ 'red' }/>
                         标签
                     </Link>
                 </li>
                 <li>
-                    <MoneyIcon fill={ 'red' }/>
                     <Link to="/money">
+                        <MoneyIcon fill={ 'red' }/>
                         记账
                     </Link>
                 </li>
                 <li>
-                    <ListIcon fill={ 'red' }/>
                     <Link to="/statistics">
+                        <ListIcon fill={ 'red' }/>
                         统计
                     </Link>
                 </li>
