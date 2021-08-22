@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 import { ReactElement } from 'react'
 import styled from 'styled-components'
+import Nav from './components/Nav'
 
 const Tags = () => (
     <div>
@@ -39,21 +40,6 @@ let Main = styled.div`
   overflow: auto;
 `
 
-let Nav = styled.nav`
-  border: 1px solid blue;
-
-  > ul {
-    display: flex;
-
-    > li {
-      width: 33.3333%;
-      text-align: center;
-      padding: 16px;
-    }
-  }
-
-`
-
 const App = () => (
     <>
         <Router>
@@ -67,13 +53,7 @@ const App = () => (
                         <Route path="*" component={ NoMatch }/>
                     </Switch>
                 </Main>
-                <Nav>
-                    <ul>
-                        <li><Link to="/tags">标签</Link></li>
-                        <li><Link to="/money">记账</Link></li>
-                        <li><Link to="/statistics">统计页</Link></li>
-                    </ul>
-                </Nav>
+                <Nav />
             </Wrapper>
         </Router>
     </>
