@@ -10,5 +10,8 @@ body {
   background: #f5f5f5;
 }
 button {
+  :focus {
+    outline: none;
+  }
   font-family: inherit;
 }
