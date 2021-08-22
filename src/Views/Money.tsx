@@ -1,9 +1,14 @@
 import styled from 'styled-components'
 
+const MoneyWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`
 const TagsSection = styled.section`
   background: #FFFFFF;
   padding: 12px 16px;
-
+  flex-grow: 1;
   > ol {
     margin: 0 -10px;
 
@@ -26,7 +31,6 @@ const TagsSection = styled.section`
     color: #666;
   }
 `
-
 const NotesSection = styled.section`
   background: #f5f5f5;
   padding: 0px 16px;
@@ -52,7 +56,9 @@ const NotesSection = styled.section`
       :focus {
         outline: none;
       }
+      
     }
+    
   }
 `
 const CategorySection = styled.section`
@@ -130,7 +136,7 @@ const NumberPadSection = styled.section`
   }
 `
 const Money = () => (
-    <div>
+    <MoneyWrapper>
         <TagsSection>
             <ol>
                 <li>衣</li>
@@ -173,7 +179,7 @@ const Money = () => (
                 <button>.</button>
             </div>
         </NumberPadSection>
-    </div>
+    </MoneyWrapper>
 )
 
 export default Money
