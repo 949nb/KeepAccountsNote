@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import React, { useEffect } from 'react'
 import useTags, { TagsItem } from 'Views/Tags/useTags'
+import { CreateId } from 'lib/createId'
 
 const Wrapper_TagsSection = styled.section`
   background: #FFFFFF;
@@ -52,7 +53,7 @@ export const TagsSection: React.FC<Props> = ({values: selectedTags, onChange: se
         const name = window.prompt('新标签的名称为')
         if (name !== null) {
             setTags(
-                [...tags, {id: Math.random(), name}]
+                [...tags, {id: CreateId(), name}]
             )
         }
     }
