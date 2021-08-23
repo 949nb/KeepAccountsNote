@@ -4,7 +4,6 @@ import { NoteSection } from './NoteSection'
 import { CategorySection } from './CategorySection'
 import { NumberPadSection } from './NumberPadSection'
 import { useState } from 'react'
-import * as module from 'module'
 
 const MoneyWrapper = styled.div`
   display: flex;

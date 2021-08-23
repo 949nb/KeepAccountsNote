@@ -22,8 +22,8 @@ export let NavWrapper = styled.nav`
         flex-direction: column;
 
         &.selected {
-          color: green;
-          fill: green;
+          color: cornflowerblue;
+          fill: cornflowerblue;
         }
       }
     }
