@@ -1,7 +1,7 @@
 import useTags from 'Views/Tags/useTags'
 import styled from 'styled-components'
 import { ReactComponent as RightIcon } from 'icons/right.svg'
-import { Link, Route, match as Match, match } from 'react-router-dom'
+import { Link, Route, match as Match, Switch } from 'react-router-dom'
 import React from 'react'
 import TagDetail from './TagDetail'
 
@@ -49,20 +49,24 @@ const Tags: React.FC<TagsParamsProps> = ({match}) => {
     const {tags, setTags} = useTags()
     return (
         <>
-            <TagsWrapper>
-                { tags.map(tag =>
-                    <Link key={ tag.id } to={match?.url + `/${tag.id}` }>
-                        <li>
-                            <span>{ tag.name }</span>
-                            <RightSvg/>
-                        </li>
-                    </Link>
-                ) }
-            </TagsWrapper>
-            <CenterBox>
-                <Button>新建标签</Button>
-            </CenterBox>
-            <Route path={ match?.url + '/:tag' } component={ TagDetail } />
+            <Switch>
+                <Route path={ match?.url + '/:tagId' } component={ TagDetail } />
+                <Route>
+                    <TagsWrapper>
+                        { tags.map(tag =>
+                            <Link key={ tag.id } to={match?.url + `/${tag.id}` }>
+                                <li>
+                                    <span>{ tag.name }</span>
+                                    <RightSvg/>
+                                </li>
+                            </Link>
+                        ) }
+                    </TagsWrapper>
+                    <CenterBox>
+                        <Button>新建标签</Button>
+                    </CenterBox>
+                </Route>
+            </Switch>
         </>
     )
 }
