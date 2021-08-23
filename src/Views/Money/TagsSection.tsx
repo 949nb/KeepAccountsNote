@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import useTags from '../../useTags'
 
 const Wrapper_TagsSection = styled.section`
