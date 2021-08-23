@@ -63,7 +63,11 @@ export const Wrapper = styled.section`
   }
 `
 
-export const NumberPadSection: React.FC = () => {
+type Props = {
+    value: number,
+    onChange: (amount: number) => void
+}
+export const NumberPadSection: React.FC<Props> = ({value: amount,onChange: setAmount }) => {
     const [output, _setOutput] = useState('0')
 
     const setOutput = (output: string) => {

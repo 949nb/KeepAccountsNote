@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Wrapper_TagsSection = styled.section`
   background: #FFFFFF;
@@ -39,9 +39,13 @@ const Wrapper_TagsSection = styled.section`
   
 `
 
-export const TagsSection: React.FC = props => {
+type Props = {
+    values: string[],
+    onChange: (selected: string[]) => void
+}
+export const TagsSection: React.FC<Props> = ({values: selectedTags, onChange: setSelectedTags}) => {
     const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行'])
-    const [selectedTags, setSelectedTags] = useState<string[]>([])
+
     const onAddTag = () => {
         const tagName = window.prompt('新标签的名称为')
         if (tagName !== null) {

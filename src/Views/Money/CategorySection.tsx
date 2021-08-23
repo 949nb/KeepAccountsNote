@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { useState } from 'react'
+import React from 'react'
 
 export const Wrapper = styled.section`
   font-size: 24px;
@@ -28,11 +28,15 @@ export const Wrapper = styled.section`
   }
 `
 
-export const CategorySection = () => {
+type Props = {
+    value: string,
+    onChange: (category: ('-'|'+')) => void
+}
+
+export const CategorySection: React.FC<Props> = ({value: category, onChange: setCategory}) => {
     const categoryMap = {"+": "收入", "-": "支出"}
     type Keys = keyof typeof categoryMap
     const categoryList: Keys[] = ["-", "+"]
-    const [category, setCategory] = useState('-')
     return (
         <Wrapper>
             <ul>
