@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom'
 import Nav from './components/Nav'
 import Tags from './Views/Tags'
-import Money from './Views/Money'
+import Money from './Views/Money/Money'
 import Statistics from './Views/Statistics'
 import NoMatch from './Views/NoMatch'
 import { Main, Wrapper } from './style/AppStyle'

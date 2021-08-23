@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { TagsSection } from './Money/TagsSection'
-import { NotesSection } from './Money/NotesSection'
-import { CategorySection } from './Money/CategorySection'
-import { NumberPadSection } from './Money/NumberPadSection'
+import { TagsSection } from './TagsSection'
+import { NoteSection } from './NoteSection'
+import { CategorySection } from './CategorySection'
+import { NumberPadSection } from './NumberPadSection'
 
 const MoneyWrapper = styled.div`
   display: flex;
@@ -12,14 +12,8 @@ const MoneyWrapper = styled.div`
 
 const Money = () => (
     <MoneyWrapper>
-        <TagsSection>
-        </TagsSection>
-        <NotesSection>
-            <label>
-                <span>备注：</span>
-                <input placeholder={ "在这里添加备注~" } type="text"/>
-            </label>
-        </NotesSection>
+        <TagsSection />
+        <NoteSection />
         <CategorySection>
             <ul>
                 <li className={ 'selected' }>支出</li>
