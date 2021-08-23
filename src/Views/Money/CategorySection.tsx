@@ -29,7 +29,6 @@ export const Wrapper = styled.section`
 `
 
 export const CategorySection = () => {
-    // + 表示收入     - 表示支出
     const categoryMap = {"+": "收入", "-": "支出"}
     type Keys = keyof typeof categoryMap
     const categoryList: Keys[] = ["-", "+"]
@@ -41,16 +40,12 @@ export const CategorySection = () => {
                     categoryList.map(c =>
                         <li onClick={ () => setCategory(c) }
                             className={ category === c ? 'selected' : '' }
+                            key={c}
                         >
                             {categoryMap[c]}
                         </li>
                     )
                 }
-                <li onClick={ () => setCategory('+') }
-                    className={ category === '+' ? 'selected' : '' }
-                >
-                    收入
-                </li>
             </ul>
         </Wrapper>
     )
