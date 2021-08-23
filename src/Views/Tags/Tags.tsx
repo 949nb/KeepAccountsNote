@@ -1,11 +1,13 @@
-import useTags from 'useTags'
+import useTags from 'Views/Tags/useTags'
 import styled from 'styled-components'
 import { ReactComponent as RightIcon } from 'icons/right.svg'
+import { Link, Route, match as Match, match } from 'react-router-dom'
+import React from 'react'
+import TagDetail from './TagDetail'
 
 const TagsWrapper = styled.ol`
   font-size: 16px;
-
-  > li {
+  li {
     line-height: 50px;
     background: white;
     padding: 0 20px;
@@ -40,21 +42,27 @@ const CenterBox = styled.div`
 const RightSvg = styled(RightIcon)`height: 1em;
   width: 1em;`
 
-const Tags = () => {
+type TagsParamsProps = {
+    match?: Match
+}
+const Tags: React.FC<TagsParamsProps> = ({match}) => {
     const {tags, setTags} = useTags()
     return (
         <>
             <TagsWrapper>
                 { tags.map(tag =>
-                    <li key={ tag }>
-                        <span>{ tag }</span>
-                        <RightSvg/>
-                    </li>
+                    <Link key={ tag.id } to={match?.url + `/${tag.id}` }>
+                        <li>
+                            <span>{ tag.name }</span>
+                            <RightSvg/>
+                        </li>
+                    </Link>
                 ) }
             </TagsWrapper>
             <CenterBox>
                 <Button>新建标签</Button>
             </CenterBox>
+            <Route path={ match?.url + '/:tag' } component={ TagDetail } />
         </>
     )
 }

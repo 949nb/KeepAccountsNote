@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import React, { useEffect } from 'react'
-import useTags from '../../useTags'
+import useTags, { TagsItem } from 'Views/Tags/useTags'
 
 const Wrapper_TagsSection = styled.section`
   background: #FFFFFF;
@@ -41,18 +41,18 @@ const Wrapper_TagsSection = styled.section`
 `
 
 type Props = {
-    values: string[],
-    onChange: (selected: string[]) => void
+    values: TagsItem[],
+    onChange: (selected: TagsItem[]) => void
 }
 export const TagsSection: React.FC<Props> = ({values: selectedTags, onChange: setSelectedTags}) => {
     // const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行'])
     const {tags, setTags} = useTags()
 
     const onAddTag = () => {
-        const tagName = window.prompt('新标签的名称为')
-        if (tagName !== null) {
+        const name = window.prompt('新标签的名称为')
+        if (name !== null) {
             setTags(
-                [...tags, tagName]
+                [...tags, {id: Math.random(), name}]
             )
         }
     }
@@ -61,7 +61,7 @@ export const TagsSection: React.FC<Props> = ({values: selectedTags, onChange: se
         selectedTags.length === 0 && tags[0] && setSelectedTags([...selectedTags, tags[0]])
     }, [])
 
-    const onToggle = (tag: string) => {
+    const onToggle = (tag: TagsItem) => {
         selectedTags.indexOf(tag) > -1 ?
             setSelectedTags(selectedTags.filter(t => t !== tag)) :
             setSelectedTags([...selectedTags, tag])
@@ -71,11 +71,11 @@ export const TagsSection: React.FC<Props> = ({values: selectedTags, onChange: se
         <Wrapper_TagsSection>
             <ol>
                 { tags.map(tag =>
-                    <li key={ tag }
+                    <li key={ tag.id }
                         onClick={ () => onToggle(tag) }
                         className={ selectedTags.indexOf(tag) > -1 ? 'selected' : '' }
                     >
-                        { tag }
+                        { tag.name }
                     </li>
                 ) }
             </ol>

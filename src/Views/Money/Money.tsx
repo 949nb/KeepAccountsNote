@@ -4,6 +4,7 @@ import { NoteSection } from './NoteSection'
 import { CategorySection } from './CategorySection'
 import { NumberPadSection } from './NumberPadSection'
 import { useState } from 'react'
+import { TagsItem } from '../Tags/useTags'
 
 const MoneyWrapper = styled.div`
   display: flex;
@@ -13,7 +14,7 @@ const MoneyWrapper = styled.div`
 
 const Money = () => {
     const [moneyData, setMoneyData] = useState({
-        tags: [] as string[],
+        tags: [] as TagsItem[],
         note: '',
         category: '-' as ('-' | '+'),
         amount: 0
