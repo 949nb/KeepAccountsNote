@@ -4,6 +4,7 @@ import { NoteSection } from './NoteSection'
 import { CategorySection } from './CategorySection'
 import { NumberPadSection } from './NumberPadSection'
 import { useState } from 'react'
+import * as module from 'module'
 
 const MoneyWrapper = styled.div`
   display: flex;
@@ -18,15 +19,16 @@ const Money = () => {
         category: '-' as ('-' | '+'),
         amount: 0
     })
+    const updateData = (data: Partial<typeof moneyData>) => {
+        setMoneyData({...moneyData, ...data})
+    }
     return (
         <>
-            { moneyData.tags.join() }
-            { moneyData.note }
             <MoneyWrapper>
-                <TagsSection values={ moneyData.tags } onChange={ (tags) => setMoneyData({...moneyData, tags}) }/>
-                <NoteSection value={ moneyData.note } onChange={ (note) => setMoneyData({...moneyData, note}) }/>
-                <CategorySection value={ moneyData.category } onChange={ (category => setMoneyData({...moneyData, category})) }/>
-                <NumberPadSection value={ moneyData.amount } onChange={ (amount => setMoneyData({...moneyData, amount})) }/>
+                <TagsSection values={ moneyData.tags } onChange={ (tags) => updateData({tags}) }/>
+                <NoteSection value={ moneyData.note } onChange={ (note) => updateData({note}) }/>
+                <CategorySection value={ moneyData.category } onChange={ (category => updateData({category})) }/>
+                <NumberPadSection value={ moneyData.amount } onChange={ (amount => updateData({amount})) }/>
             </MoneyWrapper>
         </>
     )
