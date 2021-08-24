@@ -13,9 +13,14 @@ let TagsData = [
 ]
 const useTags = (() => {
     const [tags, setTags] = useState<TagsItem[]>(TagsData)
-    const findTag: (id: number) => TagsItem = id => tags.filter(tag => tag.id === id)[0]
-    const updateTag = (id: number, name: string) => { setTags(tags.map(t => t.id === id ? {id, name} : t)) }
-    return {tags, setTags, findTag, updateTag}
+    const findTag: (id: number) => TagsItem = id => tags.filter(tag => tag.id === id)[0] || 0
+    const updateTag = (id: number, name: string) => {
+        setTags(tags.map(t => t.id === id ? {id, name} : t))
+    }
+    const deleteTag = (id: number) => {
+        setTags(tags.filter(tag => tag.id !== id))
+    }
+    return {tags, setTags, findTag, updateTag, deleteTag}
 })
 
 

@@ -4,6 +4,7 @@ import { Button } from '../../components/Button'
 import styled from 'styled-components'
 import { Input } from '../../components/Input'
 import { CenterBox } from '../../style/AppStyle'
+import { useHistory } from 'react-router-dom'
 
 const TagDetailWrapper = styled.div`
   padding: 16px;
@@ -34,10 +35,11 @@ type Params = {
     tagId: string
 }
 const TagDetail = () => {
-    const {findTag, updateTag} = useTags()
+    const {findTag, updateTag, deleteTag} = useTags()
     const {tagId} = useParams<Params>()
     let tag = findTag(parseInt(tagId))
-
+    let history = useHistory()
+    if (!tag) {history.push('/');}
     return (
         <div>
             <TopBar>
@@ -45,7 +47,7 @@ const TagDetail = () => {
                     { '<' }
                 </Link>
                 <span>TagDetail</span>
-                <div></div>
+                <div/>
             </TopBar>
             <TagDetailWrapper>
                 <h2>{ tag.name }</h2>
@@ -53,11 +55,16 @@ const TagDetail = () => {
                        type={ "text" }
                        placeholder={ '请输入标签名' }
                        value={ tag.name }
-                       onChange={ e => updateTag(tag.id, e.target.value) }
+                       onChange={ e => {
+                           updateTag(tag.id, e.target.value);
+                       } }
                 />
 
                 <CenterBox>
-                    <Button style={ {background: 'indianred'} }>删除标签</Button>
+                    <Button style={ {background: 'indianred'} } onClick={ () => {
+                        deleteTag(tag.id);
+                        history.push('/')
+                    } }>删除标签</Button>
                 </CenterBox>
             </TagDetailWrapper>
         </div>
