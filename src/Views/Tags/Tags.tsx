@@ -4,6 +4,7 @@ import { ReactComponent as RightIcon } from 'icons/right.svg'
 import { Link, Route, match as Match, Switch } from 'react-router-dom'
 import React from 'react'
 import TagDetail from './TagDetail'
+import { Button } from '../../components/Button'
 
 const TagsWrapper = styled.ol`
   font-size: 16px;
@@ -22,18 +23,8 @@ const TagsWrapper = styled.ol`
   }
 `
 
-const Button = styled.button`
-  font-size: 16px;
-  height: 40px;
-  width: 96px;
-  border-radius: 5px;
-  background: cornflowerblue;
-  border: none;
-  color: whitesmoke;
-  margin: 40px 0;
-`
 
-const CenterBox = styled.div`
+export const CenterBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

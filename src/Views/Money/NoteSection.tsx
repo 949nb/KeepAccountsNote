@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import React, { useRef } from 'react'
+import React, { ChangeEventHandler } from 'react'
+import { Input } from '../../components/Input'
 
 const Wrapper = styled.section`
   background: #f5f5f5;
@@ -38,22 +39,12 @@ type Props = {
 }
 
 export const NoteSection: React.FC<Props> = ({value:note, onChange: setNote}) => {
-    const refInput = useRef<HTMLInputElement | null>(null)
-    const InputOnBlur = () => {
-        if (refInput.current?.value)
-            setNote(refInput.current.value)
+    const InputOnChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+            setNote(e.target.value)
     }
     return (
         <Wrapper>
-            <label>
-                <span>备注：</span>
-                <input placeholder={ "在这里添加备注~" }
-                       ref={refInput}
-                       defaultValue={note}
-                       onBlur={InputOnBlur}
-                       type="text"
-                />
-            </label>
+            <Input label={'备注: '} placeholder={'在这里添加备注哦～'} value={note} onChange={InputOnChange} />
         </Wrapper>
     )
 }
