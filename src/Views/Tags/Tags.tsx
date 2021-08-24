@@ -5,6 +5,7 @@ import { Link, Route, match as Match, Switch } from 'react-router-dom'
 import React from 'react'
 import TagDetail from './TagDetail'
 import { Button } from '../../components/Button'
+import { CenterBox } from '../../style/AppStyle'
 
 const TagsWrapper = styled.ol`
   font-size: 16px;
@@ -21,13 +22,6 @@ const TagsWrapper = styled.ol`
     text-overflow: ellipsis;
     overflow: hidden;
   }
-`
-
-
-export const CenterBox = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `
 
 const RightSvg = styled(RightIcon)`height: 1em;

@@ -11,3 +11,9 @@ export let Main = styled.div`
   flex-grow: 1;
   overflow: auto;
 `
+
+export const CenterBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
