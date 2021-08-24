@@ -14,8 +14,9 @@ let TagsData = [
 const useTags = (() => {
     const [tags, setTags] = useState<TagsItem[]>(TagsData)
     const findTag: (id: number) => TagsItem = id => tags.filter(tag => tag.id === id)[0]
-    // 在CustomHook中不能返回数组？
-    return {tags, setTags, findTag}
+    const updateTag = (id: number, name: string) => { setTags(tags.map(t => t.id === id ? {id, name} : t)) }
+    return {tags, setTags, findTag, updateTag}
 })
+
 
 export default useTags

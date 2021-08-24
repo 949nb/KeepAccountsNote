@@ -34,9 +34,10 @@ type Params = {
     tagId: string
 }
 const TagDetail = () => {
-    const {findTag} = useTags()
+    const {findTag, updateTag} = useTags()
     const {tagId} = useParams<Params>()
     let tag = findTag(parseInt(tagId))
+
     return (
         <div>
             <TopBar>
@@ -48,7 +49,12 @@ const TagDetail = () => {
             </TopBar>
             <TagDetailWrapper>
                 <h2>{ tag.name }</h2>
-                <Input label={ '标签名：' } type={ "text" } placeholder={ '请输入标签名' }/>
+                <Input label={ '标签名：' }
+                       type={ "text" }
+                       placeholder={ '请输入标签名' }
+                       value={ tag.name }
+                       onChange={ e => updateTag(tag.id, e.target.value) }
+                />
 
                 <CenterBox>
                     <Button style={ {background: 'indianred'} }>删除标签</Button>

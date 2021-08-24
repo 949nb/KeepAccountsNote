@@ -6,6 +6,7 @@ let InputWrapper = styled.label`
   > label {
     display: flex;
     align-items: center;
+    font-weight: bold;
 
     > span {
       margin-right: 16px;
@@ -19,6 +20,7 @@ let InputWrapper = styled.label`
       background: none;
       border: none;
       white-space: pre-wrap;
+      font-size: inherit;
 
       :focus {
         outline: none;
