@@ -6,7 +6,7 @@ import {
 import Nav from './components/Nav'
 import Tags from './Views/Tags/Tags'
 import Money from './Views/Money/Money'
-import Statistics from './Views/Statistics'
+import Statistics from './Views/Statistics/Statistics'
 import NoMatch from './Views/NoMatch'
 import { Main, Wrapper } from './style/AppStyle'
 

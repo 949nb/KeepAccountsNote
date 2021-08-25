@@ -1,9 +1,8 @@
 import styled from 'styled-components'
 import React, { useEffect } from 'react'
 import useTags, { TagsItem } from 'Views/Tags/useTags'
-import { CreateId } from 'lib/createId'
 
-const Wrapper_TagsSection = styled.section`
+const Wrapper = styled.section`
   background: #FFFFFF;
   padding: 12px 16px;
   flex-grow: 1;
@@ -46,17 +45,7 @@ type Props = {
     onChange: (selected: TagsItem[]) => void
 }
 export const TagsSection: React.FC<Props> = ({values: selectedTags, onChange: setSelectedTags}) => {
-    // const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行'])
-    const {tags, setTags} = useTags()
-
-    const onAddTag = () => {
-        const name = window.prompt('新标签的名称为')
-        if (name !== null) {
-            setTags(
-                [...tags, {id: CreateId(), name}]
-            )
-        }
-    }
+    const {tags, addTag} = useTags()
 
     useEffect(() => {
         selectedTags.length === 0 && tags[0] && setSelectedTags([...selectedTags, tags[0]])
@@ -69,7 +58,7 @@ export const TagsSection: React.FC<Props> = ({values: selectedTags, onChange: se
     }
 
     return (
-        <Wrapper_TagsSection>
+        <Wrapper>
             <ol>
                 { tags.map(tag =>
                     <li key={ tag.id }
@@ -80,7 +69,7 @@ export const TagsSection: React.FC<Props> = ({values: selectedTags, onChange: se
                     </li>
                 ) }
             </ol>
-            <button onClick={ onAddTag }>新增标签</button>
-        </Wrapper_TagsSection>
+            <button onClick={addTag}>新增标签</button>
+        </Wrapper>
     )
 }

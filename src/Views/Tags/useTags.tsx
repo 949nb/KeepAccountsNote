@@ -5,22 +5,32 @@ export type TagsItem = {
     id: number,
     name: string
 }
-let TagsData = [
-    {id: CreateId(), name: '衣'},
-    {id: CreateId(), name: '食'},
-    {id: CreateId(), name: '住'},
-    {id: CreateId(), name: '行'}
-]
+
 const useTags = (() => {
-    const [tags, setTags] = useState<TagsItem[]>(TagsData)
+    let setLocalStorage = (key: string, value: any) => {
+        window.localStorage.setItem(key, JSON.stringify(value))
+    }
+
+    const [tags, setTags] = useState<TagsItem[]>(JSON.parse(window.localStorage.getItem('tags') || '[]'))
     const findTag: (id: number) => TagsItem = id => tags.filter(tag => tag.id === id)[0] || 0
+
     const updateTag = (id: number, name: string) => {
         setTags(tags.map(t => t.id === id ? {id, name} : t))
+        setLocalStorage('tags', [...tags.map(t => t.id === id ? {id, name} : t)])
     }
     const deleteTag = (id: number) => {
         setTags(tags.filter(tag => tag.id !== id))
+        setLocalStorage('tags', tags.filter(tag => tag.id !== id))
     }
-    return {tags, setTags, findTag, updateTag, deleteTag}
+    const addTags = () => {
+        let name = window.prompt('请输入新增的标签名～')
+        if (name !== null && name !== '') {
+            setTags([...tags, {id: CreateId(), name}])
+            setLocalStorage('tags', [...tags, {id: CreateId(), name}])
+        }
+    }
+
+    return {tags, setTags, findTag, updateTag, deleteTag, addTag: addTags}
 })
 
 

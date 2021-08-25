@@ -12,6 +12,10 @@ const MoneyWrapper = styled.div`
   height: 100%;
 `
 
+const CategoryWrapper = styled.div`
+  background: #cccccc;
+`
+
 const Money = () => {
     const [moneyData, setMoneyData] = useState({
         tags: [] as TagsItem[],
@@ -27,7 +31,9 @@ const Money = () => {
             <MoneyWrapper>
                 <TagsSection values={ moneyData.tags } onChange={ (tags) => updateData({tags}) }/>
                 <NoteSection value={ moneyData.note } onChange={ (note) => updateData({note}) }/>
-                <CategorySection value={ moneyData.category } onChange={ (category => updateData({category})) }/>
+                <CategoryWrapper>
+                    <CategorySection value={ moneyData.category } onChange={ (category => updateData({category})) }/>
+                </CategoryWrapper>
                 <NumberPadSection value={ moneyData.amount } onChange={ (amount => updateData({amount})) }/>
             </MoneyWrapper>
         </>

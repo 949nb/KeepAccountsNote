@@ -7,7 +7,6 @@ export const Wrapper = styled.section`
   > ul {
     display: flex;
     justify-content: space-between;
-    background: #c4c4c4;
 
     > li {
       width: 50%;
