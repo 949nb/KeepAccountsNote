@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React, { useEffect } from 'react'
+import React from 'react'
 import useTags, { TagsItem } from 'Views/Tags/useTags'
 
 const Wrapper = styled.section`
@@ -47,13 +47,9 @@ type Props = {
 export const TagsSection: React.FC<Props> = ({values: selectedTags, onChange: setSelectedTags}) => {
     const {tags, addTag} = useTags()
 
-    useEffect(() => {
-        selectedTags.length === 0 && tags[0] && setSelectedTags([...selectedTags, tags[0]])
-    }, [])
-
     const onToggle = (tag: TagsItem) => {
-        selectedTags.indexOf(tag) > -1 ?
-            setSelectedTags(selectedTags.filter(t => t !== tag)) :
+        selectedTags.find(t => t.id === tag.id) ?
+            setSelectedTags(selectedTags.filter(t => t.id !== tag.id)) :
             setSelectedTags([...selectedTags, tag])
     }
 
@@ -63,7 +59,7 @@ export const TagsSection: React.FC<Props> = ({values: selectedTags, onChange: se
                 { tags.map(tag =>
                     <li key={ tag.id }
                         onClick={ () => onToggle(tag) }
-                        className={ selectedTags.indexOf(tag) > -1 ? 'selected' : '' }
+                        className={ selectedTags.find(t => t.id === tag.id) ? 'selected' : '' }
                     >
                         { tag.name }
                     </li>

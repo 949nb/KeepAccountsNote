@@ -5,9 +5,11 @@ import React from 'react'
 import useTags from './useTags'
 import styled from 'styled-components'
 import { ReactComponent as RightIcon } from '../../icons/right.svg'
+import { TopBar } from './TagDetail'
 
 
 const TagsWrapper = styled.ol`
+  margin-top: 16px;
   font-size: 16px;
 
   li {
@@ -37,6 +39,11 @@ export const TagsList: React.FC<TagsParamsProps> = ({match}) => {
     const {tags, addTag} = useTags()
     return (
         <>
+            <TopBar>
+                <div></div>
+                <span>标签列表</span>
+                <div/>
+            </TopBar>
             <TagsWrapper>
                 { tags.map(tag => {
                         return <Link key={ tag.id } to={ match?.url + `/${ tag.id }` }>
