@@ -1,7 +1,7 @@
 {
   "name": "keepaccounts",
   "version": "0.1.0",
-  "homepage": "https://949nb.github.io/MoneyWebSide",
+  "homepage": "https://hanyu949.gitee.io/ledger-react",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",

@@ -68,6 +68,7 @@ type Props = {
     onChange: (amount: number) => void
     onOk: () => void
 }
+
 export const NumberPadSection: React.FC<Props> = ({onOk, value: amount, onChange: setAmount}) => {
     const [output, _setOutput] = useState('0')
 
