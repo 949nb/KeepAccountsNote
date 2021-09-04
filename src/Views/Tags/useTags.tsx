@@ -3,10 +3,12 @@ import { CreateId } from 'lib/createId'
 
 export type TagsItem = {
     id: number,
-    name: string
+    name: string,
+    iconName?: string
 }
 
 const useTags = (() => {
+
     let setLocalStorage = (key: string, value: any) => {
         window.localStorage.setItem(key, JSON.stringify(value))
     }
@@ -24,7 +26,7 @@ const useTags = (() => {
     }
     const addTags = () => {
         let name = window.prompt('请输入新增的标签名～')
-        if (name !== null && name !== '') {
+        if (name !== null && name !== '' && name.trim() !== '') {
             setTags([...tags, {id: CreateId(), name}])
             setLocalStorage('tags', [...tags, {id: CreateId(), name}])
         }

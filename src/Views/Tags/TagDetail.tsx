@@ -12,19 +12,16 @@ const TagDetailWrapper = styled.div`
 `
 
 export const TopBar = styled.header`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  line-height: 20px;
-  padding: 14px;
-  background: white;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+  font-size: 48px;
+  color: #3D4757;
+  padding: 1rem;
 
   > div, a {
+    font-size: 30px;
     height: 100%;
     flex: 1;
     align-self: center;
-    padding-left: 10px;
+    padding-right: 10px;
   }
 
   > h2 {
@@ -36,11 +33,13 @@ type Params = {
     tagId: string
 }
 const TagDetail: React.FC = () => {
-    const { findTag, updateTag, deleteTag} = useTags()
+    const {findTag, updateTag, deleteTag} = useTags()
     const {tagId} = useParams<Params>()
     let tag = findTag(parseInt(tagId))
     let history = useHistory()
-    if (!tag) {history.push('/');}
+    if (!tag) {
+        history.push('/');
+    }
     return (
         <div>
             <TopBar>
@@ -48,7 +47,6 @@ const TagDetail: React.FC = () => {
                     { '<' }
                 </Link>
                 <span>标签详情</span>
-                <div/>
             </TopBar>
             <TagDetailWrapper>
                 <h2>{ tag.name }</h2>

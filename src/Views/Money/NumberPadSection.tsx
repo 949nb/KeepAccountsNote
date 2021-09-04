@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React, { useCallback, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 
 export const Wrapper = styled.section`
   display: flex;
@@ -71,6 +71,9 @@ type Props = {
 
 export const NumberPadSection: React.FC<Props> = ({onOk, value: amount, onChange: setAmount}) => {
     const [output, _setOutput] = useState('0')
+    useEffect(() => {
+        setAmount(parseFloat(output))
+    }, [output])
 
     const setOutput = (output: string) => {
         if (output.length > 16) {
@@ -79,10 +82,6 @@ export const NumberPadSection: React.FC<Props> = ({onOk, value: amount, onChange
             _setOutput(output)
         }
     }
-
-    useCallback(() => {
-        setAmount(parseFloat(output))
-    }, [output, setAmount])
 
     const onClickNumbers = (e: React.MouseEvent<HTMLDivElement>) => {
         const text = (e.target as HTMLButtonElement).textContent

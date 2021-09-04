@@ -3,7 +3,7 @@ import { TagsSection } from './TagsSection'
 import { NoteSection } from './NoteSection'
 import { CategorySection } from './CategorySection'
 import { NumberPadSection } from './NumberPadSection'
-import React, { useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import useTags, { TagsItem } from '../Tags/useTags'
 import { RecordItem, useRecords } from '../Statistics/useRecords'
 import { useHistory } from 'react-router-dom'
@@ -15,10 +15,10 @@ const MoneyWrapper = styled.div`
 `
 
 const CategoryWrapper = styled.div`
-  background: #cccccc;
+  background: white;
+  width: 100%;
 `
 
-let count = 0;
 const Money:React.FC = () => {
     const { addRecord } = useRecords()
     const {tags } = useTags()
@@ -29,22 +29,19 @@ const Money:React.FC = () => {
         category: '-' as ('-' | '+'),
         amount: 0
     })
-
     useEffect(() => {
-        if (moneyData.tags.length === 0 && tags[0] && count === 0) {
-            count++
+        if (moneyData.tags.length === 0 && tags[0]) {
             setMoneyData({...moneyData, tags: [{...tags[0]}]})
         }
-    }, [moneyData, tags])
+    }, [])
 
     const updateData = (data: Partial<typeof moneyData>) => {
         setMoneyData({...moneyData, ...data})
     }
 
     const onOK = () => {
-        if (moneyData.note && moneyData.amount>=0 && moneyData.tags.length > 0) {
-            console.log('ok')
-            addRecord({...moneyData, createdAt: new Date().toLocaleDateString()})
+        if (moneyData.note && moneyData.amount > 0 && moneyData.tags.length > 0) {
+            addRecord({...moneyData, createdAt: new Date().toLocaleDateString() +  new Date().toLocaleTimeString()})
             window.alert('记账成功~')
             history.push('/statistics')
         }
@@ -53,10 +50,10 @@ const Money:React.FC = () => {
         <>
             <MoneyWrapper>
                 <TagsSection values={ moneyData.tags } onChange={ (tags) => updateData({tags}) }/>
-                <NoteSection value={ moneyData.note } onChange={ (note) => updateData({note}) }/>
                 <CategoryWrapper>
                     <CategorySection value={ moneyData.category } onChange={ (category => updateData({category})) }/>
                 </CategoryWrapper>
+                <NoteSection value={ moneyData.note } onChange={ (note) => updateData({note}) }/>
                 <NumberPadSection value={ moneyData.amount } onOk={onOK} onChange={ (amount => updateData({amount})) }/>
             </MoneyWrapper>
         </>

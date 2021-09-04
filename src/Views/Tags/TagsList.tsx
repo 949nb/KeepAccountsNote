@@ -40,9 +40,7 @@ export const TagsList: React.FC<TagsParamsProps> = ({match}) => {
     return (
         <>
             <TopBar>
-                <div></div>
                 <span>标签列表</span>
-                <div/>
             </TopBar>
             <TagsWrapper>
                 { tags.map(tag => {

@@ -16,11 +16,12 @@ const Wrapper = styled.section`
 
     > li {
       background: #d9d9d9;
-      border-radius: 18px;
+      border-radius: 50%;
       display: inline-block;
       padding: 3px 17px;
       font-size: 14px;
       margin: 8px 10px;
+      line-height: 2rem;
 
       &.selected {
         background: cornflowerblue;
@@ -32,12 +33,12 @@ const Wrapper = styled.section`
   > button {
     margin-top: 5px;
     background: none;
+    border-radius: 0;
     border: none;
     border-bottom: 1px solid #333;
     padding: 2px 4px;
     color: #666;
   }
-  
 `
 
 type Props = {

@@ -2,14 +2,15 @@ import styled from 'styled-components'
 import React from 'react'
 
 export const Wrapper = styled.section`
-  font-size: 24px;
+  font-size: 48px;
+  color: #3D4757;
+  padding: 0 1rem;
 
   > ul {
     display: flex;
-    justify-content: space-between;
 
     > li {
-      width: 50%;
+      width: 35%;
       text-align: center;
       padding: 16px 0;
       position: relative;
@@ -18,18 +19,24 @@ export const Wrapper = styled.section`
         content: '';
         display: block;
         position: absolute;
-        background: #333333;
+        background: #3D4757;
         height: 3px;
         width: 100%;
         bottom: 0;
+        animation: .25s ease-in bottomMoveOut;
       }
     }
+  }
+
+  @keyframes bottomMoveOut {
+    0% { width: 0 }
+    100% { width: 100% }
   }
 `
 
 type Props = {
     value: string,
-    onChange: (category: ('-'|'+')) => void
+    onChange: (category: ('-' | '+')) => void
 }
 
 export const CategorySection: React.FC<Props> = ({value: category, onChange: setCategory}) => {
@@ -43,9 +50,9 @@ export const CategorySection: React.FC<Props> = ({value: category, onChange: set
                     categoryList.map(c =>
                         <li onClick={ () => setCategory(c) }
                             className={ category === c ? 'selected' : '' }
-                            key={c}
+                            key={ c }
                         >
-                            {categoryMap[c]}
+                            { categoryMap[c] }
                         </li>
                     )
                 }
